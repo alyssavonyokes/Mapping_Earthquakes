@@ -1,16 +1,15 @@
-// creates regular background for map
-let light = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-	attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
- 	maxZoom: 18,
- 	accessToken: API_KEY
-});
-// Creates dark background for map
-let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
- 	attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
- 	maxZoom: 18,
- 	accessToken: API_KEY
-});
-
+// create background for map
+// let light = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+// 	attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+// 	maxZoom: 18,
+// 	accessToken: API_KEY
+// });
+//Creates dark background for map
+// let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+// 	attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+// 	maxZoom: 18,
+// 	accessToken: API_KEY
+// });
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -41,8 +40,6 @@ let earthquakes = new L.layerGroup();
 let overlays = {
     Earthquakes: earthquakes
 };
-
-
 // Adds layers control and basemaps control for user
 L.control.layers(baseMaps, overlays).addTo(map);
 
@@ -90,9 +87,7 @@ function getRadius(magnitude) {
     }
     return magnitude * 4;
 }
-
 // Gets the GeoJSON data for map
-// @param data is the earthquake data --> L.geoJSON --> addTo
 d3.json(quakelink).then(function (data) {
     // Creates geoJSON layer for map
     L.geoJson(data, {
